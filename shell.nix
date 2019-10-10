@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   name = "elm-rcv";
   buildInputs = [
     elmPackages.elm
-    haskellPackages.elm-init
+    # haskellPackages.elm-init
     # haskellPackages.elm-reactor
   ];
 }
