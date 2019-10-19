@@ -1,4 +1,4 @@
-module Ballots exposing (Ballot, restBallots, firstBallot)
+module Ballots exposing (Ballot, ballots)
 
 import Candidates exposing (CandidateName)
 
