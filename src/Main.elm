@@ -12,6 +12,7 @@ import Html5.DragDrop as DragDrop
 import Json.Decode exposing (Value)
 
 -- development
+import Debug exposing (log)
 
 port dragstart : Value -> Cmd msg
 
@@ -86,7 +87,10 @@ updateGame msg game =
        DragDropMsg msg_ ->
            let
                ( model_, result ) =
-                   DragDrop.update msg_ game.dragDrop
+                   DragDrop.update msg_ (log "dragdrop result:" game.dragDrop)
+                   -- DragDrop.update msg_ game.dragDrop
+
+               dropId = log "dropId" (DragDrop.getDropId model_)
 
                dragPort =
                    DragDrop.getDragstartEvent msg_
@@ -106,8 +110,8 @@ updateGame msg game =
                    -- ballot dragged on correct place, and further ballots remain. Update votes and iterate
                    -- ballot dragged on correct candidate, and no further ballots remain. Move to elimination
                    case (correctDrag, game.unsortedBallots) of
-                       ( False, _ ) -> ( Game { game | lastGuess = Just Incorrect, dragDrop = model_ }
-                                      , Cmd.none )
+                       ( False, _ ) -> ( Game { game | dragDrop = model_ }
+                                      , dragPort )
 
                        ( True, next :: nextUnsorted ) ->
                            ( Game { game | unsortedBallots = nextUnsorted
@@ -115,9 +119,9 @@ updateGame msg game =
                                , currentRound = castBallot game.currentBallot game.currentRound
                                , lastGuess = Just Correct
                                , dragDrop = model_
-                           }, Cmd.none )
+                           }, dragPort )
 
-                       ( True, [] ) -> ( Elimination game.currentRound, Cmd.none )
+                       ( True, [] ) -> ( Elimination game.currentRound, dragPort )
 
            in
                newModel
@@ -158,27 +162,31 @@ renderGame game =
                 Just Correct -> div [] [ text "Correct!" ]
                 Just Incorrect -> div [] [ text "Incorrect :|" ]
                 Nothing -> div [] []
+
+        target = ballotTarget game.currentRound game.currentBallot
     in
         div []
             [ lastGuess
             , div [ style "display" "flex"
-                  , style "flex-wrap" "wrap"] (List.map (renderCandidate dropId) game.currentRound)
+                  , style "flex-wrap" "wrap"] (List.map (renderCandidate dropId target) game.currentRound)
             , div [ style "display" "flex"] [ renderBallot game.currentBallot ]
         ]
         
-renderCandidate : Maybe CandidateName -> Candidate -> Html Msg
-renderCandidate target candidate =
+renderCandidate : Maybe CandidateName -> CandidateName -> Candidate -> Html Msg
+renderCandidate currentlyDroppingOver correctCandidate candidateToRender =
+    -- no target: regular outline
+    -- drop target, and dropTarget == this candi
     let
         outline =
-            case target of
+            case currentlyDroppingOver of
                 Just candidateName ->
-                    if candidateName == candidate.name
-                        then [ style "outline-color" "green" ]
-                    else [style "outline-color" "red"]
-                Nothing -> []
+                    if ( (candidateToRender.name == correctCandidate) && (candidateName == correctCandidate) )
+                        then [ style "outline-color" "green", style "outline-style" "solid" ]
+                    else [style "outline-color" "red", style "outline-style" "solid"]
+                Nothing -> [ style "outline-color" "blue" ,  style "outline-style" "solid" ]
 
         droppable =
-            DragDrop.droppable DragDropMsg candidate.name
+            DragDrop.droppable DragDropMsg candidateToRender.name
     in
         div (outline
             ++ droppable
@@ -187,7 +195,7 @@ renderCandidate target candidate =
               , style "height" "250px"
               , style "margin" "40px"
               , style "background-color" "lightgray"
-              ]) [ text candidate.name ]
+              ]) [ text candidateToRender.name ]
 
 -- Todo: if pos is set, render it absolutely
 renderBallot : Ballot -> Html Msg
