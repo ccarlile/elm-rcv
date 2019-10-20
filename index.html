@@ -10,11 +10,17 @@
     <h1>HERES YA FUGGIN APP</h1>
     <div id="elm-app"></div>
     <script src="elm.js"></script>
+    <!-- Polyfill for touch -->
     <script src="https://cdn.jsdelivr.net/npm/drag-drop-touch-polyfill@1.0.0/DragDropTouch.min.js"></script>
+    <!-- Elm app init - first initialize the app, then uglily hack around firefox -->
     <script>
       var app = Elm.Main.init({
           node: document.getElementById("elm-app")
       })
+
+      app.ports.dragstart.subscribe(function (event) {
+          event.dataTransfer.setData('text', '');
+      });
     </script>
   </body>
 </html>
