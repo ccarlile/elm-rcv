@@ -1,0 +1,8 @@
+* RCV Simulator
+  This is a simulation of RCV, written in Elm. It's currently hardcoded to a list of candidates and ballots, and could be improved by adding some generality there. Could probably also use some DRY. This was my first serious Elm project, so be gentle. It features the [[https://package.elm-lang.org/packages/norpan/elm-html5-drag-drop/latest/][HTML5 Drag Drop Library]]. 
+** To hack on
+   - clone the repo
+   - [[https://guide.elm-lang.org/install/][Install Elm]]
+   - run ~elm make src/Main.elm --output=elm.js~
+** To view the example
+   Check out the ~index.html~
