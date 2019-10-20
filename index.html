@@ -1,11 +1,20 @@
-<head>
-  <title>Elm Reactor</title>
-  <script src="elm.js" charset="utf-8"></script>
-</head>
-<body>
-  <script type="text/javascript">
-    window.addEventListener("DOMContentLoaded", function (){
-      Elm.fullscreen(Elm.Main, { });
-    })
-  </script>
-</body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" 
+          href="https://rankedchoicetn.org/wp-content/plugins/ht-mega-for-elementor/assets/css/htbbootstrap.css?ver=1.2.3">
+
+  </head>
+
+  <body>
+    <h1>HERES YA FUGGIN APP</h1>
+    <div id="elm-app"></div>
+    <script src="elm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/drag-drop-touch-polyfill@1.0.0/DragDropTouch.min.js"></script>
+    <script>
+      var app = Elm.Main.init({
+          node: document.getElementById("elm-app")
+      })
+    </script>
+  </body>
+</html>
