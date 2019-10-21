@@ -71,10 +71,6 @@ ballotTarget candidates ballot =
         ballot.choice2
     else ballot.choice3
 
-eliminateBallots: Round -> List Ballot ->  List Ballot
-eliminateBallots round allBallots =
-    List.filter ( keepBallot round ) allBallots
-
 losers : Round -> List CandidateName
 losers round =
     let
@@ -82,26 +78,6 @@ losers round =
         roundSet = List.map .name round |> Set.fromList
     in
         Set.diff allCandidatesSet roundSet |> Set.toList
-    
-
-keepBallot : Round -> Ballot -> Bool
-keepBallot round ballot =
-    let
-        eliminated = losers round
-        toElim = List.length eliminated
-        names = List.map .name round
-
-    in
-        if ( toElim == 1
-                 && List.member ballot.choice1 eliminated )
-            then True
-
-        else if ( toElim == 2 &&
-                      (
-                       ( List.member ballot.choice1 eliminated && List.member ballot.choice2 eliminated )
-                      || (List.member ballot.choice2 names && List.member ballot.choice3 names) ) )
-            then True
-        else False
 
 -- Message types
 type Msg
@@ -139,7 +115,8 @@ update msg model =
                         newModel : Model
                         newModel 
                             = if correctGuess then
-                                  eliminateBallots nextCandidates Ballots.ballots
+                                  List.length nextCandidates
+                                      |> Ballots.ballots 
                                       |> PostEliminationState nextCandidates candidate.name
                                       |> PostElimination
                               else Elimination( EliminationState state.round ( Just Incorrect ) )
@@ -173,7 +150,7 @@ update msg model =
         _ ->
             case msg of
                 PlayGame ->
-                    (initializeGame (List.map (\name -> Candidate name 0) defaultCandidates) Ballots.ballots
+                    (initializeGame (List.map (\name -> Candidate name 0) defaultCandidates) (Ballots.ballots 4)
                     , Cmd.none )
                 _ -> ( model, Cmd.none )
 

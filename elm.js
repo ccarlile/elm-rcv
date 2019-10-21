@@ -4508,25 +4508,25 @@ var elm$core$Basics$sub = _Basics_sub;
 var elm$core$Elm$JsArray$length = _JsArray_length;
 var elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.a) {
+		if (!builder.e) {
 			return A4(
 				elm$core$Array$Array_elm_builtin,
-				elm$core$Elm$JsArray$length(builder.c),
+				elm$core$Elm$JsArray$length(builder.g),
 				elm$core$Array$shiftStep,
 				elm$core$Elm$JsArray$empty,
-				builder.c);
+				builder.g);
 		} else {
-			var treeLen = builder.a * elm$core$Array$branchFactor;
+			var treeLen = builder.e * elm$core$Array$branchFactor;
 			var depth = elm$core$Basics$floor(
 				A2(elm$core$Basics$logBase, elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? elm$core$List$reverse(builder.g) : builder.g;
-			var tree = A2(elm$core$Array$treeFromBuilder, correctNodeList, builder.a);
+			var correctNodeList = reverseNodeList ? elm$core$List$reverse(builder.h) : builder.h;
+			var tree = A2(elm$core$Array$treeFromBuilder, correctNodeList, builder.e);
 			return A4(
 				elm$core$Array$Array_elm_builtin,
-				elm$core$Elm$JsArray$length(builder.c) + treeLen,
+				elm$core$Elm$JsArray$length(builder.g) + treeLen,
 				A2(elm$core$Basics$max, 5, depth * elm$core$Array$shiftStep),
 				tree,
-				builder.c);
+				builder.g);
 		}
 	});
 var elm$core$Basics$idiv = _Basics_idiv;
@@ -4540,7 +4540,7 @@ var elm$core$Array$initializeHelp = F5(
 				return A2(
 					elm$core$Array$builderToArray,
 					false,
-					{g: nodeList, a: (len / elm$core$Array$branchFactor) | 0, c: tail});
+					{h: nodeList, e: (len / elm$core$Array$branchFactor) | 0, g: tail});
 			} else {
 				var leaf = elm$core$Array$Leaf(
 					A3(elm$core$Elm$JsArray$initialize, elm$core$Array$branchFactor, fromIndex, fn));
@@ -4800,25 +4800,45 @@ var author$project$Candidates$hawaiian = 'Hawaiian';
 var author$project$Candidates$mushroom = 'Mushroom';
 var author$project$Candidates$pepperoni = 'Pepperoni';
 var author$project$Candidates$supreme = 'Supreme';
-var author$project$Ballots$ballots = _List_fromArray(
-	[
-		{d: author$project$Candidates$hawaiian, e: author$project$Candidates$mushroom, f: author$project$Candidates$pepperoni, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$pepperoni, e: author$project$Candidates$supreme, f: author$project$Candidates$mushroom, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$hawaiian, e: author$project$Candidates$mushroom, f: author$project$Candidates$supreme, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$supreme, e: author$project$Candidates$hawaiian, f: author$project$Candidates$mushroom, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$pepperoni, e: author$project$Candidates$hawaiian, f: author$project$Candidates$mushroom, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$pepperoni, e: author$project$Candidates$mushroom, f: author$project$Candidates$supreme, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$hawaiian, e: author$project$Candidates$mushroom, f: author$project$Candidates$supreme, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$mushroom, e: author$project$Candidates$hawaiian, f: author$project$Candidates$supreme, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$hawaiian, e: author$project$Candidates$pepperoni, f: author$project$Candidates$mushroom, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$supreme, e: author$project$Candidates$hawaiian, f: author$project$Candidates$pepperoni, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$pepperoni, e: author$project$Candidates$mushroom, f: author$project$Candidates$supreme, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$mushroom, e: author$project$Candidates$supreme, f: author$project$Candidates$hawaiian, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$mushroom, e: author$project$Candidates$pepperoni, f: author$project$Candidates$supreme, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$pepperoni, e: author$project$Candidates$hawaiian, f: author$project$Candidates$mushroom, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$pepperoni, e: author$project$Candidates$hawaiian, f: author$project$Candidates$supreme, h: elm$core$Maybe$Nothing},
-		{d: author$project$Candidates$hawaiian, e: author$project$Candidates$pepperoni, f: author$project$Candidates$mushroom, h: elm$core$Maybe$Nothing}
-	]);
+var author$project$Ballots$ballots = function (candidates) {
+	switch (candidates) {
+		case 4:
+			return _List_fromArray(
+				[
+					{a: author$project$Candidates$pepperoni, b: author$project$Candidates$supreme, c: author$project$Candidates$mushroom, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$mushroom, b: author$project$Candidates$hawaiian, c: author$project$Candidates$supreme, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$pepperoni, b: author$project$Candidates$supreme, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$hawaiian, b: author$project$Candidates$pepperoni, c: author$project$Candidates$supreme, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$mushroom, b: author$project$Candidates$pepperoni, c: author$project$Candidates$supreme, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$mushroom, b: author$project$Candidates$supreme, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$pepperoni, b: author$project$Candidates$supreme, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$supreme, b: author$project$Candidates$pepperoni, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$pepperoni, b: author$project$Candidates$mushroom, c: author$project$Candidates$supreme, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$hawaiian, b: author$project$Candidates$pepperoni, c: author$project$Candidates$mushroom, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$mushroom, b: author$project$Candidates$supreme, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$supreme, b: author$project$Candidates$hawaiian, c: author$project$Candidates$pepperoni, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$supreme, b: author$project$Candidates$mushroom, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$mushroom, b: author$project$Candidates$pepperoni, c: author$project$Candidates$supreme, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$mushroom, b: author$project$Candidates$pepperoni, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$pepperoni, b: author$project$Candidates$mushroom, c: author$project$Candidates$supreme, d: elm$core$Maybe$Nothing}
+				]);
+		case 3:
+			return _List_fromArray(
+				[
+					{a: author$project$Candidates$hawaiian, b: author$project$Candidates$pepperoni, c: author$project$Candidates$supreme, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$hawaiian, b: author$project$Candidates$pepperoni, c: author$project$Candidates$mushroom, d: elm$core$Maybe$Nothing}
+				]);
+		case 2:
+			return _List_fromArray(
+				[
+					{a: author$project$Candidates$supreme, b: author$project$Candidates$pepperoni, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$supreme, b: author$project$Candidates$pepperoni, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$supreme, b: author$project$Candidates$mushroom, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing}
+				]);
+		default:
+			return _List_Nil;
+	}
+};
 var author$project$Candidates$Candidate = F2(
 	function (name, votes) {
 		return {aI: name, aS: votes};
@@ -4849,6 +4869,32 @@ var author$project$Main$PreElimination = function (a) {
 var author$project$Main$Winner = function (a) {
 	return {$: 6, a: a};
 };
+var author$project$Main$Game = function (a) {
+	return {$: 1, a: a};
+};
+var author$project$Main$GameState = F6(
+	function (unsortedBallots, currentBallot, currentRound, lastGuess, dragDrop, votesCounted) {
+		return {x: currentBallot, m: currentRound, y: dragDrop, O: lastGuess, X: unsortedBallots, aT: votesCounted};
+	});
+var norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging = {$: 0};
+var norpan$elm_html5_drag_drop$Html5$DragDrop$init = norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging;
+var author$project$Main$initializeGame = F2(
+	function (round, ballots) {
+		if (ballots.b) {
+			var first = ballots.a;
+			var rest = ballots.b;
+			return author$project$Main$Game(
+				A6(author$project$Main$GameState, rest, first, round, elm$core$Maybe$Nothing, norpan$elm_html5_drag_drop$Html5$DragDrop$init, 0));
+		} else {
+			return author$project$Main$Winner(
+				{aI: 'Vladmir Putin', aS: 1000000});
+		}
+	});
+var author$project$Main$Correct = 0;
+var author$project$Main$PreEliminationState = F2(
+	function (round, wasCorrect) {
+		return {k: round, F: wasCorrect};
+	});
 var elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -4918,8 +4964,629 @@ var elm$core$List$map = F2(
 			_List_Nil,
 			xs);
 	});
+var elm$core$List$any = F2(
+	function (isOkay, list) {
+		any:
+		while (true) {
+			if (!list.b) {
+				return false;
+			} else {
+				var x = list.a;
+				var xs = list.b;
+				if (isOkay(x)) {
+					return true;
+				} else {
+					var $temp$isOkay = isOkay,
+						$temp$list = xs;
+					isOkay = $temp$isOkay;
+					list = $temp$list;
+					continue any;
+				}
+			}
+		}
+	});
+var elm$core$List$member = F2(
+	function (x, xs) {
+		return A2(
+			elm$core$List$any,
+			function (a) {
+				return _Utils_eq(a, x);
+			},
+			xs);
+	});
+var author$project$Main$ballotTarget = F2(
+	function (candidates, ballot) {
+		return A2(
+			elm$core$List$member,
+			ballot.a,
+			A2(
+				elm$core$List$map,
+				function ($) {
+					return $.aI;
+				},
+				candidates)) ? ballot.a : (A2(
+			elm$core$List$member,
+			ballot.b,
+			A2(
+				elm$core$List$map,
+				function ($) {
+					return $.aI;
+				},
+				candidates)) ? ballot.b : ballot.c);
+	});
+var author$project$Main$castBallot = F2(
+	function (ballot, round) {
+		var target = A2(author$project$Main$ballotTarget, round, ballot);
+		var cast = function (c) {
+			return _Utils_eq(target, c.aI) ? _Utils_update(
+				c,
+				{aS: c.aS + 1}) : c;
+		};
+		return A2(elm$core$List$map, cast, round);
+	});
 var elm$core$Basics$identity = function (x) {
 	return x;
+};
+var author$project$Main$dragstart = _Platform_outgoingPort('dragstart', elm$core$Basics$identity);
+var elm$core$Basics$composeR = F3(
+	function (f, g, x) {
+		return g(
+			f(x));
+	});
+var elm$core$Maybe$map = F2(
+	function (f, maybe) {
+		if (!maybe.$) {
+			var value = maybe.a;
+			return elm$core$Maybe$Just(
+				f(value));
+		} else {
+			return elm$core$Maybe$Nothing;
+		}
+	});
+var elm$core$Maybe$withDefault = F2(
+	function (_default, maybe) {
+		if (!maybe.$) {
+			var value = maybe.a;
+			return value;
+		} else {
+			return _default;
+		}
+	});
+var norpan$elm_html5_drag_drop$Html5$DragDrop$getDragstartEvent = function (msg) {
+	if (!msg.$) {
+		var dragId = msg.a;
+		var event = msg.b;
+		return elm$core$Maybe$Just(
+			{aA: dragId, aC: event});
+	} else {
+		return elm$core$Maybe$Nothing;
+	}
+};
+var norpan$elm_html5_drag_drop$Html5$DragDrop$getDropId = function (model) {
+	switch (model.$) {
+		case 0:
+			return elm$core$Maybe$Nothing;
+		case 1:
+			var dragId = model.a;
+			return elm$core$Maybe$Nothing;
+		default:
+			var dragId = model.a;
+			var dropId = model.b;
+			return elm$core$Maybe$Just(dropId);
+	}
+};
+var norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver = F4(
+	function (a, b, c, d) {
+		return {$: 2, a: a, b: b, c: c, d: d};
+	});
+var norpan$elm_html5_drag_drop$Html5$DragDrop$Dragging = function (a) {
+	return {$: 1, a: a};
+};
+var norpan$elm_html5_drag_drop$Html5$DragDrop$updateCommon = F3(
+	function (sticky, msg, model) {
+		var _n0 = _Utils_Tuple3(msg, model, sticky);
+		_n0$9:
+		while (true) {
+			switch (_n0.a.$) {
+				case 0:
+					var _n1 = _n0.a;
+					var dragId = _n1.a;
+					return _Utils_Tuple2(
+						norpan$elm_html5_drag_drop$Html5$DragDrop$Dragging(dragId),
+						elm$core$Maybe$Nothing);
+				case 1:
+					var _n2 = _n0.a;
+					return _Utils_Tuple2(norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging, elm$core$Maybe$Nothing);
+				case 2:
+					switch (_n0.b.$) {
+						case 1:
+							var dropId = _n0.a.a;
+							var dragId = _n0.b.a;
+							return _Utils_Tuple2(
+								A4(norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver, dragId, dropId, 0, elm$core$Maybe$Nothing),
+								elm$core$Maybe$Nothing);
+						case 2:
+							var dropId = _n0.a.a;
+							var _n3 = _n0.b;
+							var dragId = _n3.a;
+							var pos = _n3.d;
+							return _Utils_Tuple2(
+								A4(norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver, dragId, dropId, 0, pos),
+								elm$core$Maybe$Nothing);
+						default:
+							break _n0$9;
+					}
+				case 3:
+					if ((_n0.b.$ === 2) && (!_n0.c)) {
+						var dropId_ = _n0.a.a;
+						var _n4 = _n0.b;
+						var dragId = _n4.a;
+						var dropId = _n4.b;
+						return _Utils_eq(dropId_, dropId) ? _Utils_Tuple2(
+							norpan$elm_html5_drag_drop$Html5$DragDrop$Dragging(dragId),
+							elm$core$Maybe$Nothing) : _Utils_Tuple2(model, elm$core$Maybe$Nothing);
+					} else {
+						break _n0$9;
+					}
+				case 4:
+					switch (_n0.b.$) {
+						case 1:
+							var _n5 = _n0.a;
+							var dropId = _n5.a;
+							var timeStamp = _n5.b;
+							var pos = _n5.c;
+							var dragId = _n0.b.a;
+							return _Utils_Tuple2(
+								A4(
+									norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver,
+									dragId,
+									dropId,
+									timeStamp,
+									elm$core$Maybe$Just(pos)),
+								elm$core$Maybe$Nothing);
+						case 2:
+							var _n6 = _n0.a;
+							var dropId = _n6.a;
+							var timeStamp = _n6.b;
+							var pos = _n6.c;
+							var _n7 = _n0.b;
+							var dragId = _n7.a;
+							var currentDropId = _n7.b;
+							var currentTimeStamp = _n7.c;
+							var currentPos = _n7.d;
+							return _Utils_eq(timeStamp, currentTimeStamp) ? _Utils_Tuple2(model, elm$core$Maybe$Nothing) : ((_Utils_eq(
+								elm$core$Maybe$Just(pos),
+								currentPos) && _Utils_eq(dropId, currentDropId)) ? _Utils_Tuple2(model, elm$core$Maybe$Nothing) : _Utils_Tuple2(
+								A4(
+									norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver,
+									dragId,
+									dropId,
+									timeStamp,
+									elm$core$Maybe$Just(pos)),
+								elm$core$Maybe$Nothing));
+						default:
+							break _n0$9;
+					}
+				default:
+					switch (_n0.b.$) {
+						case 1:
+							var _n8 = _n0.a;
+							var dropId = _n8.a;
+							var pos = _n8.b;
+							var dragId = _n0.b.a;
+							return _Utils_Tuple2(
+								norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging,
+								elm$core$Maybe$Just(
+									_Utils_Tuple3(dragId, dropId, pos)));
+						case 2:
+							var _n9 = _n0.a;
+							var dropId = _n9.a;
+							var pos = _n9.b;
+							var _n10 = _n0.b;
+							var dragId = _n10.a;
+							return _Utils_Tuple2(
+								norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging,
+								elm$core$Maybe$Just(
+									_Utils_Tuple3(dragId, dropId, pos)));
+						default:
+							break _n0$9;
+					}
+			}
+		}
+		return _Utils_Tuple2(model, elm$core$Maybe$Nothing);
+	});
+var norpan$elm_html5_drag_drop$Html5$DragDrop$update = norpan$elm_html5_drag_drop$Html5$DragDrop$updateCommon(false);
+var author$project$Main$updateGame = F2(
+	function (msg, game) {
+		if (msg.$ === 2) {
+			var msg_ = msg.a;
+			var dragPort = A2(
+				elm$core$Maybe$withDefault,
+				elm$core$Platform$Cmd$none,
+				A2(
+					elm$core$Maybe$map,
+					A2(
+						elm$core$Basics$composeR,
+						function ($) {
+							return $.aC;
+						},
+						author$project$Main$dragstart),
+					norpan$elm_html5_drag_drop$Html5$DragDrop$getDragstartEvent(msg_)));
+			var _n1 = A2(norpan$elm_html5_drag_drop$Html5$DragDrop$update, msg_, game.y);
+			var model_ = _n1.a;
+			var result = _n1.b;
+			var dropId = norpan$elm_html5_drag_drop$Html5$DragDrop$getDropId(model_);
+			var correctDrag = function () {
+				if (!result.$) {
+					var _n6 = result.a;
+					var ballot = _n6.a;
+					var candidateName = _n6.b;
+					return _Utils_eq(
+						A2(author$project$Main$ballotTarget, game.m, ballot),
+						candidateName) ? elm$core$Maybe$Just(true) : elm$core$Maybe$Just(false);
+				} else {
+					return elm$core$Maybe$Nothing;
+				}
+			}();
+			var newModel = function () {
+				var _n2 = _Utils_Tuple2(correctDrag, game.X);
+				if (_n2.a.$ === 1) {
+					var _n3 = _n2.a;
+					return _Utils_Tuple2(
+						author$project$Main$Game(
+							_Utils_update(
+								game,
+								{y: model_})),
+						dragPort);
+				} else {
+					if (!_n2.a.a) {
+						return _Utils_Tuple2(
+							author$project$Main$Game(
+								_Utils_update(
+									game,
+									{
+										y: model_,
+										O: elm$core$Maybe$Just(1)
+									})),
+							dragPort);
+					} else {
+						if (_n2.b.b) {
+							var _n4 = _n2.b;
+							var next = _n4.a;
+							var nextUnsorted = _n4.b;
+							return _Utils_Tuple2(
+								author$project$Main$Game(
+									_Utils_update(
+										game,
+										{
+											x: next,
+											m: A2(author$project$Main$castBallot, game.x, game.m),
+											y: model_,
+											O: elm$core$Maybe$Just(0),
+											X: nextUnsorted
+										})),
+								dragPort);
+						} else {
+							var lastRound = game.m;
+							var elimRound = A2(author$project$Main$castBallot, game.x, game.m);
+							return _Utils_Tuple2(
+								author$project$Main$PreElimination(
+									A2(author$project$Main$PreEliminationState, elimRound, elm$core$Maybe$Nothing)),
+								dragPort);
+						}
+					}
+				}
+			}();
+			return newModel;
+		} else {
+			return _Utils_Tuple2(
+				author$project$Main$Game(game),
+				elm$core$Platform$Cmd$none);
+		}
+	});
+var elm$core$Basics$not = _Basics_not;
+var elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2(elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
+var elm$core$List$head = function (list) {
+	if (list.b) {
+		var x = list.a;
+		var xs = list.b;
+		return elm$core$Maybe$Just(x);
+	} else {
+		return elm$core$Maybe$Nothing;
+	}
+};
+var elm$core$List$sortBy = _List_sortBy;
+var author$project$Main$update = F2(
+	function (msg, model) {
+		switch (model.$) {
+			case 2:
+				var state = model.a;
+				if (msg.$ === 4) {
+					var candidate = msg.a;
+					var correctGuess = A2(
+						elm$core$Maybe$withDefault,
+						false,
+						A2(
+							elm$core$Maybe$map,
+							function (el) {
+								return _Utils_eq(el, candidate);
+							},
+							elm$core$List$head(
+								A2(
+									elm$core$List$sortBy,
+									function ($) {
+										return $.aS;
+									},
+									state.k))));
+					var nextCandidates = correctGuess ? A2(
+						elm$core$List$filter,
+						function (c) {
+							return !_Utils_eq(c.aI, candidate.aI);
+						},
+						state.k) : state.k;
+					var newModel = correctGuess ? author$project$Main$PostElimination(
+						A3(
+							author$project$Main$PostEliminationState,
+							nextCandidates,
+							candidate.aI,
+							author$project$Ballots$ballots(
+								elm$core$List$length(nextCandidates)))) : author$project$Main$Elimination(
+						A2(
+							author$project$Main$EliminationState,
+							state.k,
+							elm$core$Maybe$Just(1)));
+					return _Utils_Tuple2(newModel, elm$core$Platform$Cmd$none);
+				} else {
+					return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+				}
+			case 5:
+				var state = model.a;
+				if (msg.$ === 6) {
+					var candidate = msg.a;
+					return _Utils_Tuple2(
+						author$project$Main$Winner(candidate),
+						elm$core$Platform$Cmd$none);
+				} else {
+					return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+				}
+			case 1:
+				var game = model.a;
+				return A2(author$project$Main$updateGame, msg, game);
+			case 4:
+				var state = model.a;
+				if (msg.$ === 7) {
+					return _Utils_Tuple2(
+						A2(author$project$Main$initializeGame, state.ag, state.af),
+						elm$core$Platform$Cmd$none);
+				} else {
+					return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+				}
+			case 3:
+				var round = model.a;
+				switch (msg.$) {
+					case 3:
+						if (!msg.a) {
+							var _n5 = msg.a;
+							return _Utils_Tuple2(
+								author$project$Main$Elimination(
+									A2(author$project$Main$EliminationState, round.k, elm$core$Maybe$Nothing)),
+								elm$core$Platform$Cmd$none);
+						} else {
+							var _n6 = msg.a;
+							return _Utils_Tuple2(
+								author$project$Main$PreElimination(
+									_Utils_update(
+										round,
+										{
+											F: elm$core$Maybe$Just(1)
+										})),
+								elm$core$Platform$Cmd$none);
+						}
+					case 5:
+						var winners = msg.a;
+						return _Utils_Tuple2(
+							author$project$Main$PickWinner(winners),
+							elm$core$Platform$Cmd$none);
+					default:
+						return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+				}
+			default:
+				if (msg.$ === 1) {
+					return _Utils_Tuple2(
+						A2(
+							author$project$Main$initializeGame,
+							A2(
+								elm$core$List$map,
+								function (name) {
+									return A2(author$project$Candidates$Candidate, name, 0);
+								},
+								author$project$Candidates$defaultCandidates),
+							author$project$Ballots$ballots(4)),
+						elm$core$Platform$Cmd$none);
+				} else {
+					return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+				}
+		}
+	});
+var author$project$Main$PlayGame = {$: 1};
+var elm$json$Json$Decode$map = _Json_map1;
+var elm$json$Json$Decode$map2 = _Json_map2;
+var elm$json$Json$Decode$succeed = _Json_succeed;
+var elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
+	switch (handler.$) {
+		case 0:
+			return 0;
+		case 1:
+			return 1;
+		case 2:
+			return 2;
+		default:
+			return 3;
+	}
+};
+var elm$html$Html$h3 = _VirtualDom_node('h3');
+var elm$html$Html$h5 = _VirtualDom_node('h5');
+var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
+var author$project$Main$candidateHtml = function (candidate) {
+	return _List_fromArray(
+		[
+			A2(
+			elm$html$Html$h3,
+			_List_Nil,
+			_List_fromArray(
+				[
+					elm$html$Html$text(candidate.aI)
+				])),
+			A2(
+			elm$html$Html$h5,
+			_List_Nil,
+			_List_fromArray(
+				[
+					elm$html$Html$text(
+					A2(
+						elm$core$String$join,
+						'',
+						_List_fromArray(
+							[
+								'(Votes: ',
+								elm$core$String$fromInt(candidate.aS),
+								')'
+							])))
+				]))
+		]);
+};
+var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
+var author$project$Main$candidateStyle = _List_fromArray(
+	[
+		A2(elm$html$Html$Attributes$style, 'width', '161px'),
+		A2(elm$html$Html$Attributes$style, 'height', '100px'),
+		A2(elm$html$Html$Attributes$style, 'margin', '1.5em 1em'),
+		A2(elm$html$Html$Attributes$style, 'padding-top', '1em'),
+		A2(elm$html$Html$Attributes$style, 'padding-bottom', '2em'),
+		A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
+		A2(elm$html$Html$Attributes$style, 'background-color', '#387e82'),
+		A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+		A2(elm$html$Html$Attributes$style, 'color', 'white')
+	]);
+var author$project$Main$colorHex = '#387e82';
+var author$project$Main$AttemptEliminate = function (a) {
+	return {$: 4, a: a};
+};
+var elm$html$Html$div = _VirtualDom_node('div');
+var elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 0, a: a};
+};
+var elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			elm$virtual_dom$VirtualDom$on,
+			event,
+			elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		elm$html$Html$Events$on,
+		'click',
+		elm$json$Json$Decode$succeed(msg));
+};
+var author$project$Main$renderCandidateElim = function (candidate) {
+	return A2(
+		elm$html$Html$div,
+		A2(
+			elm$core$List$cons,
+			elm$html$Html$Events$onClick(
+				author$project$Main$AttemptEliminate(candidate)),
+			author$project$Main$candidateStyle),
+		author$project$Main$candidateHtml(candidate));
+};
+var author$project$Main$renderLastGuess = function (lastGuess) {
+	var incorrect = A2(elm$html$Html$Attributes$style, 'background-color', '#D75835');
+	var correct = A2(elm$html$Html$Attributes$style, 'background-color', '#387e82');
+	var commonStyle = _List_fromArray(
+		[
+			A2(elm$html$Html$Attributes$style, 'width', '100%'),
+			A2(elm$html$Html$Attributes$style, 'margin-left', '3em'),
+			A2(elm$html$Html$Attributes$style, 'margin-right', '3em'),
+			A2(elm$html$Html$Attributes$style, 'margin-top', '.5em'),
+			A2(elm$html$Html$Attributes$style, 'padding-bottom', '.5em'),
+			A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+			A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
+			A2(elm$html$Html$Attributes$style, 'color', 'white')
+		]);
+	if (!lastGuess.$) {
+		if (!lastGuess.a) {
+			var _n1 = lastGuess.a;
+			return A2(
+				elm$html$Html$div,
+				A2(elm$core$List$cons, correct, commonStyle),
+				_List_fromArray(
+					[
+						elm$html$Html$text('Correct!')
+					]));
+		} else {
+			var _n2 = lastGuess.a;
+			return A2(
+				elm$html$Html$div,
+				A2(elm$core$List$cons, incorrect, commonStyle),
+				_List_fromArray(
+					[
+						elm$html$Html$text('Incorrect. Please try again')
+					]));
+		}
+	} else {
+		return A2(elm$html$Html$div, _List_Nil, _List_Nil);
+	}
+};
+var author$project$Main$renderElimination = function (state) {
+	return A2(
+		elm$html$Html$div,
+		_List_fromArray(
+			[
+				A2(elm$html$Html$Attributes$style, 'text-align', 'center')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						A2(elm$html$Html$Attributes$style, 'display', 'inline-block')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text('Since no candidate received a majority, we eliminate the least popular pizza and move those ballots to the voters\' next available choices. Click on the least popular pizza')
+					])),
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						A2(elm$html$Html$Attributes$style, 'display', 'flex'),
+						A2(elm$html$Html$Attributes$style, 'justify-content', 'center'),
+						A2(elm$html$Html$Attributes$style, 'flex-wrap', 'wrap')
+					]),
+				_Utils_ap(
+					_List_fromArray(
+						[
+							author$project$Main$renderLastGuess(state.F)
+						]),
+					A2(elm$core$List$map, author$project$Main$renderCandidateElim, state.k)))
+			]));
+};
+var author$project$Main$DragDropMsg = function (a) {
+	return {$: 2, a: a};
 };
 var elm$core$Dict$foldl = F3(
 	function (func, acc, dict) {
@@ -5458,674 +6125,14 @@ var author$project$Main$losers = function (round) {
 	return elm$core$Set$toList(
 		A2(elm$core$Set$diff, allCandidatesSet, roundSet));
 };
-var elm$core$List$any = F2(
-	function (isOkay, list) {
-		any:
-		while (true) {
-			if (!list.b) {
-				return false;
-			} else {
-				var x = list.a;
-				var xs = list.b;
-				if (isOkay(x)) {
-					return true;
-				} else {
-					var $temp$isOkay = isOkay,
-						$temp$list = xs;
-					isOkay = $temp$isOkay;
-					list = $temp$list;
-					continue any;
-				}
-			}
-		}
-	});
-var elm$core$List$member = F2(
-	function (x, xs) {
-		return A2(
-			elm$core$List$any,
-			function (a) {
-				return _Utils_eq(a, x);
-			},
-			xs);
-	});
-var author$project$Main$keepBallot = F2(
-	function (round, ballot) {
-		var names = A2(
-			elm$core$List$map,
-			function ($) {
-				return $.aI;
-			},
-			round);
-		var eliminated = author$project$Main$losers(round);
-		var toElim = elm$core$List$length(eliminated);
-		return ((toElim === 1) && A2(elm$core$List$member, ballot.d, eliminated)) ? true : (((toElim === 2) && ((A2(elm$core$List$member, ballot.d, eliminated) && A2(elm$core$List$member, ballot.e, eliminated)) || (A2(elm$core$List$member, ballot.e, names) && A2(elm$core$List$member, ballot.f, names)))) ? true : false);
-	});
-var elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2(elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
-	});
-var author$project$Main$eliminateBallots = F2(
-	function (round, allBallots) {
-		return A2(
-			elm$core$List$filter,
-			author$project$Main$keepBallot(round),
-			allBallots);
-	});
-var author$project$Main$Game = function (a) {
-	return {$: 1, a: a};
-};
-var author$project$Main$GameState = F6(
-	function (unsortedBallots, currentBallot, currentRound, lastGuess, dragDrop, votesCounted) {
-		return {x: currentBallot, m: currentRound, y: dragDrop, O: lastGuess, X: unsortedBallots, aT: votesCounted};
-	});
-var norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging = {$: 0};
-var norpan$elm_html5_drag_drop$Html5$DragDrop$init = norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging;
-var author$project$Main$initializeGame = F2(
-	function (round, ballots) {
-		if (ballots.b) {
-			var first = ballots.a;
-			var rest = ballots.b;
-			return author$project$Main$Game(
-				A6(author$project$Main$GameState, rest, first, round, elm$core$Maybe$Nothing, norpan$elm_html5_drag_drop$Html5$DragDrop$init, 0));
-		} else {
-			return author$project$Main$Winner(
-				{aI: 'Vladmir Putin', aS: 1000000});
-		}
-	});
-var author$project$Main$Correct = 0;
-var author$project$Main$PreEliminationState = F2(
-	function (round, wasCorrect) {
-		return {k: round, F: wasCorrect};
-	});
-var author$project$Main$ballotTarget = F2(
-	function (candidates, ballot) {
-		return A2(
-			elm$core$List$member,
-			ballot.d,
-			A2(
-				elm$core$List$map,
-				function ($) {
-					return $.aI;
-				},
-				candidates)) ? ballot.d : (A2(
-			elm$core$List$member,
-			ballot.e,
-			A2(
-				elm$core$List$map,
-				function ($) {
-					return $.aI;
-				},
-				candidates)) ? ballot.e : ballot.f);
-	});
-var author$project$Main$castBallot = F2(
-	function (ballot, round) {
-		var target = A2(author$project$Main$ballotTarget, round, ballot);
-		var cast = function (c) {
-			return _Utils_eq(target, c.aI) ? _Utils_update(
-				c,
-				{aS: c.aS + 1}) : c;
-		};
-		return A2(elm$core$List$map, cast, round);
-	});
-var author$project$Main$dragstart = _Platform_outgoingPort('dragstart', elm$core$Basics$identity);
-var elm$core$Basics$composeR = F3(
-	function (f, g, x) {
-		return g(
-			f(x));
-	});
-var elm$core$Maybe$map = F2(
-	function (f, maybe) {
-		if (!maybe.$) {
-			var value = maybe.a;
-			return elm$core$Maybe$Just(
-				f(value));
-		} else {
-			return elm$core$Maybe$Nothing;
-		}
-	});
-var elm$core$Maybe$withDefault = F2(
-	function (_default, maybe) {
-		if (!maybe.$) {
-			var value = maybe.a;
-			return value;
-		} else {
-			return _default;
-		}
-	});
-var norpan$elm_html5_drag_drop$Html5$DragDrop$getDragstartEvent = function (msg) {
-	if (!msg.$) {
-		var dragId = msg.a;
-		var event = msg.b;
-		return elm$core$Maybe$Just(
-			{aA: dragId, aC: event});
-	} else {
-		return elm$core$Maybe$Nothing;
-	}
-};
-var norpan$elm_html5_drag_drop$Html5$DragDrop$getDropId = function (model) {
-	switch (model.$) {
-		case 0:
-			return elm$core$Maybe$Nothing;
-		case 1:
-			var dragId = model.a;
-			return elm$core$Maybe$Nothing;
-		default:
-			var dragId = model.a;
-			var dropId = model.b;
-			return elm$core$Maybe$Just(dropId);
-	}
-};
-var norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver = F4(
-	function (a, b, c, d) {
-		return {$: 2, a: a, b: b, c: c, d: d};
-	});
-var norpan$elm_html5_drag_drop$Html5$DragDrop$Dragging = function (a) {
-	return {$: 1, a: a};
-};
-var norpan$elm_html5_drag_drop$Html5$DragDrop$updateCommon = F3(
-	function (sticky, msg, model) {
-		var _n0 = _Utils_Tuple3(msg, model, sticky);
-		_n0$9:
-		while (true) {
-			switch (_n0.a.$) {
-				case 0:
-					var _n1 = _n0.a;
-					var dragId = _n1.a;
-					return _Utils_Tuple2(
-						norpan$elm_html5_drag_drop$Html5$DragDrop$Dragging(dragId),
-						elm$core$Maybe$Nothing);
-				case 1:
-					var _n2 = _n0.a;
-					return _Utils_Tuple2(norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging, elm$core$Maybe$Nothing);
-				case 2:
-					switch (_n0.b.$) {
-						case 1:
-							var dropId = _n0.a.a;
-							var dragId = _n0.b.a;
-							return _Utils_Tuple2(
-								A4(norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver, dragId, dropId, 0, elm$core$Maybe$Nothing),
-								elm$core$Maybe$Nothing);
-						case 2:
-							var dropId = _n0.a.a;
-							var _n3 = _n0.b;
-							var dragId = _n3.a;
-							var pos = _n3.d;
-							return _Utils_Tuple2(
-								A4(norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver, dragId, dropId, 0, pos),
-								elm$core$Maybe$Nothing);
-						default:
-							break _n0$9;
-					}
-				case 3:
-					if ((_n0.b.$ === 2) && (!_n0.c)) {
-						var dropId_ = _n0.a.a;
-						var _n4 = _n0.b;
-						var dragId = _n4.a;
-						var dropId = _n4.b;
-						return _Utils_eq(dropId_, dropId) ? _Utils_Tuple2(
-							norpan$elm_html5_drag_drop$Html5$DragDrop$Dragging(dragId),
-							elm$core$Maybe$Nothing) : _Utils_Tuple2(model, elm$core$Maybe$Nothing);
-					} else {
-						break _n0$9;
-					}
-				case 4:
-					switch (_n0.b.$) {
-						case 1:
-							var _n5 = _n0.a;
-							var dropId = _n5.a;
-							var timeStamp = _n5.b;
-							var pos = _n5.c;
-							var dragId = _n0.b.a;
-							return _Utils_Tuple2(
-								A4(
-									norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver,
-									dragId,
-									dropId,
-									timeStamp,
-									elm$core$Maybe$Just(pos)),
-								elm$core$Maybe$Nothing);
-						case 2:
-							var _n6 = _n0.a;
-							var dropId = _n6.a;
-							var timeStamp = _n6.b;
-							var pos = _n6.c;
-							var _n7 = _n0.b;
-							var dragId = _n7.a;
-							var currentDropId = _n7.b;
-							var currentTimeStamp = _n7.c;
-							var currentPos = _n7.d;
-							return _Utils_eq(timeStamp, currentTimeStamp) ? _Utils_Tuple2(model, elm$core$Maybe$Nothing) : ((_Utils_eq(
-								elm$core$Maybe$Just(pos),
-								currentPos) && _Utils_eq(dropId, currentDropId)) ? _Utils_Tuple2(model, elm$core$Maybe$Nothing) : _Utils_Tuple2(
-								A4(
-									norpan$elm_html5_drag_drop$Html5$DragDrop$DraggedOver,
-									dragId,
-									dropId,
-									timeStamp,
-									elm$core$Maybe$Just(pos)),
-								elm$core$Maybe$Nothing));
-						default:
-							break _n0$9;
-					}
-				default:
-					switch (_n0.b.$) {
-						case 1:
-							var _n8 = _n0.a;
-							var dropId = _n8.a;
-							var pos = _n8.b;
-							var dragId = _n0.b.a;
-							return _Utils_Tuple2(
-								norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging,
-								elm$core$Maybe$Just(
-									_Utils_Tuple3(dragId, dropId, pos)));
-						case 2:
-							var _n9 = _n0.a;
-							var dropId = _n9.a;
-							var pos = _n9.b;
-							var _n10 = _n0.b;
-							var dragId = _n10.a;
-							return _Utils_Tuple2(
-								norpan$elm_html5_drag_drop$Html5$DragDrop$NotDragging,
-								elm$core$Maybe$Just(
-									_Utils_Tuple3(dragId, dropId, pos)));
-						default:
-							break _n0$9;
-					}
-			}
-		}
-		return _Utils_Tuple2(model, elm$core$Maybe$Nothing);
-	});
-var norpan$elm_html5_drag_drop$Html5$DragDrop$update = norpan$elm_html5_drag_drop$Html5$DragDrop$updateCommon(false);
-var author$project$Main$updateGame = F2(
-	function (msg, game) {
-		if (msg.$ === 2) {
-			var msg_ = msg.a;
-			var dragPort = A2(
-				elm$core$Maybe$withDefault,
-				elm$core$Platform$Cmd$none,
-				A2(
-					elm$core$Maybe$map,
-					A2(
-						elm$core$Basics$composeR,
-						function ($) {
-							return $.aC;
-						},
-						author$project$Main$dragstart),
-					norpan$elm_html5_drag_drop$Html5$DragDrop$getDragstartEvent(msg_)));
-			var _n1 = A2(norpan$elm_html5_drag_drop$Html5$DragDrop$update, msg_, game.y);
-			var model_ = _n1.a;
-			var result = _n1.b;
-			var dropId = norpan$elm_html5_drag_drop$Html5$DragDrop$getDropId(model_);
-			var correctDrag = function () {
-				if (!result.$) {
-					var _n6 = result.a;
-					var ballot = _n6.a;
-					var candidateName = _n6.b;
-					return _Utils_eq(
-						A2(author$project$Main$ballotTarget, game.m, ballot),
-						candidateName) ? elm$core$Maybe$Just(true) : elm$core$Maybe$Just(false);
-				} else {
-					return elm$core$Maybe$Nothing;
-				}
-			}();
-			var newModel = function () {
-				var _n2 = _Utils_Tuple2(correctDrag, game.X);
-				if (_n2.a.$ === 1) {
-					var _n3 = _n2.a;
-					return _Utils_Tuple2(
-						author$project$Main$Game(
-							_Utils_update(
-								game,
-								{y: model_})),
-						dragPort);
-				} else {
-					if (!_n2.a.a) {
-						return _Utils_Tuple2(
-							author$project$Main$Game(
-								_Utils_update(
-									game,
-									{
-										y: model_,
-										O: elm$core$Maybe$Just(1)
-									})),
-							dragPort);
-					} else {
-						if (_n2.b.b) {
-							var _n4 = _n2.b;
-							var next = _n4.a;
-							var nextUnsorted = _n4.b;
-							return _Utils_Tuple2(
-								author$project$Main$Game(
-									_Utils_update(
-										game,
-										{
-											x: next,
-											m: A2(author$project$Main$castBallot, game.x, game.m),
-											y: model_,
-											O: elm$core$Maybe$Just(0),
-											X: nextUnsorted
-										})),
-								dragPort);
-						} else {
-							var lastRound = game.m;
-							var elimRound = A2(author$project$Main$castBallot, game.x, game.m);
-							return _Utils_Tuple2(
-								author$project$Main$PreElimination(
-									A2(author$project$Main$PreEliminationState, elimRound, elm$core$Maybe$Nothing)),
-								dragPort);
-						}
-					}
-				}
-			}();
-			return newModel;
-		} else {
-			return _Utils_Tuple2(
-				author$project$Main$Game(game),
-				elm$core$Platform$Cmd$none);
-		}
-	});
-var elm$core$Basics$not = _Basics_not;
-var elm$core$List$head = function (list) {
-	if (list.b) {
-		var x = list.a;
-		var xs = list.b;
-		return elm$core$Maybe$Just(x);
-	} else {
-		return elm$core$Maybe$Nothing;
-	}
-};
-var elm$core$List$sortBy = _List_sortBy;
-var author$project$Main$update = F2(
-	function (msg, model) {
-		switch (model.$) {
-			case 2:
-				var state = model.a;
-				if (msg.$ === 4) {
-					var candidate = msg.a;
-					var correctGuess = A2(
-						elm$core$Maybe$withDefault,
-						false,
-						A2(
-							elm$core$Maybe$map,
-							function (el) {
-								return _Utils_eq(el, candidate);
-							},
-							elm$core$List$head(
-								A2(
-									elm$core$List$sortBy,
-									function ($) {
-										return $.aS;
-									},
-									state.k))));
-					var nextCandidates = correctGuess ? A2(
-						elm$core$List$filter,
-						function (c) {
-							return !_Utils_eq(c.aI, candidate.aI);
-						},
-						state.k) : state.k;
-					var newModel = correctGuess ? author$project$Main$PostElimination(
-						A3(
-							author$project$Main$PostEliminationState,
-							nextCandidates,
-							candidate.aI,
-							A2(author$project$Main$eliminateBallots, nextCandidates, author$project$Ballots$ballots))) : author$project$Main$Elimination(
-						A2(
-							author$project$Main$EliminationState,
-							state.k,
-							elm$core$Maybe$Just(1)));
-					return _Utils_Tuple2(newModel, elm$core$Platform$Cmd$none);
-				} else {
-					return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
-				}
-			case 5:
-				var state = model.a;
-				if (msg.$ === 6) {
-					var candidate = msg.a;
-					return _Utils_Tuple2(
-						author$project$Main$Winner(candidate),
-						elm$core$Platform$Cmd$none);
-				} else {
-					return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
-				}
-			case 1:
-				var game = model.a;
-				return A2(author$project$Main$updateGame, msg, game);
-			case 4:
-				var state = model.a;
-				if (msg.$ === 7) {
-					return _Utils_Tuple2(
-						A2(author$project$Main$initializeGame, state.ag, state.af),
-						elm$core$Platform$Cmd$none);
-				} else {
-					return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
-				}
-			case 3:
-				var round = model.a;
-				switch (msg.$) {
-					case 3:
-						if (!msg.a) {
-							var _n5 = msg.a;
-							return _Utils_Tuple2(
-								author$project$Main$Elimination(
-									A2(author$project$Main$EliminationState, round.k, elm$core$Maybe$Nothing)),
-								elm$core$Platform$Cmd$none);
-						} else {
-							var _n6 = msg.a;
-							return _Utils_Tuple2(
-								author$project$Main$PreElimination(
-									_Utils_update(
-										round,
-										{
-											F: elm$core$Maybe$Just(1)
-										})),
-								elm$core$Platform$Cmd$none);
-						}
-					case 5:
-						var winners = msg.a;
-						return _Utils_Tuple2(
-							author$project$Main$PickWinner(winners),
-							elm$core$Platform$Cmd$none);
-					default:
-						return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
-				}
-			default:
-				if (msg.$ === 1) {
-					return _Utils_Tuple2(
-						A2(
-							author$project$Main$initializeGame,
-							A2(
-								elm$core$List$map,
-								function (name) {
-									return A2(author$project$Candidates$Candidate, name, 0);
-								},
-								author$project$Candidates$defaultCandidates),
-							author$project$Ballots$ballots),
-						elm$core$Platform$Cmd$none);
-				} else {
-					return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
-				}
-		}
-	});
-var author$project$Main$PlayGame = {$: 1};
-var elm$json$Json$Decode$map = _Json_map1;
-var elm$json$Json$Decode$map2 = _Json_map2;
-var elm$json$Json$Decode$succeed = _Json_succeed;
-var elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
-	switch (handler.$) {
-		case 0:
-			return 0;
-		case 1:
-			return 1;
-		case 2:
-			return 2;
-		default:
-			return 3;
-	}
-};
-var elm$html$Html$h3 = _VirtualDom_node('h3');
-var elm$html$Html$h5 = _VirtualDom_node('h5');
-var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
-var author$project$Main$candidateHtml = function (candidate) {
-	return _List_fromArray(
-		[
-			A2(
-			elm$html$Html$h3,
-			_List_Nil,
-			_List_fromArray(
-				[
-					elm$html$Html$text(candidate.aI)
-				])),
-			A2(
-			elm$html$Html$h5,
-			_List_Nil,
-			_List_fromArray(
-				[
-					elm$html$Html$text(
-					A2(
-						elm$core$String$join,
-						'',
-						_List_fromArray(
-							[
-								'(Votes: ',
-								elm$core$String$fromInt(candidate.aS),
-								')'
-							])))
-				]))
-		]);
-};
-var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
-var author$project$Main$candidateStyle = _List_fromArray(
-	[
-		A2(elm$html$Html$Attributes$style, 'width', '161px'),
-		A2(elm$html$Html$Attributes$style, 'height', '100px'),
-		A2(elm$html$Html$Attributes$style, 'margin', '1.5em 1em'),
-		A2(elm$html$Html$Attributes$style, 'padding-top', '1em'),
-		A2(elm$html$Html$Attributes$style, 'padding-bottom', '2em'),
-		A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
-		A2(elm$html$Html$Attributes$style, 'background-color', '#387e82'),
-		A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
-		A2(elm$html$Html$Attributes$style, 'color', 'white')
-	]);
-var author$project$Main$colorHex = '#387e82';
-var author$project$Main$AttemptEliminate = function (a) {
-	return {$: 4, a: a};
-};
-var elm$html$Html$div = _VirtualDom_node('div');
-var elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 0, a: a};
-};
-var elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var elm$html$Html$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			elm$virtual_dom$VirtualDom$on,
-			event,
-			elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var elm$html$Html$Events$onClick = function (msg) {
-	return A2(
-		elm$html$Html$Events$on,
-		'click',
-		elm$json$Json$Decode$succeed(msg));
-};
-var author$project$Main$renderCandidateElim = function (candidate) {
-	return A2(
-		elm$html$Html$div,
-		A2(
-			elm$core$List$cons,
-			elm$html$Html$Events$onClick(
-				author$project$Main$AttemptEliminate(candidate)),
-			author$project$Main$candidateStyle),
-		author$project$Main$candidateHtml(candidate));
-};
-var author$project$Main$renderLastGuess = function (lastGuess) {
-	var incorrect = A2(elm$html$Html$Attributes$style, 'background-color', '#D75835');
-	var correct = A2(elm$html$Html$Attributes$style, 'background-color', '#387e82');
-	var commonStyle = _List_fromArray(
-		[
-			A2(elm$html$Html$Attributes$style, 'width', '100%'),
-			A2(elm$html$Html$Attributes$style, 'margin-left', '3em'),
-			A2(elm$html$Html$Attributes$style, 'margin-right', '3em'),
-			A2(elm$html$Html$Attributes$style, 'margin-top', '.5em'),
-			A2(elm$html$Html$Attributes$style, 'padding-bottom', '.5em'),
-			A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
-			A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
-			A2(elm$html$Html$Attributes$style, 'color', 'white')
-		]);
-	if (!lastGuess.$) {
-		if (!lastGuess.a) {
-			var _n1 = lastGuess.a;
-			return A2(
-				elm$html$Html$div,
-				A2(elm$core$List$cons, correct, commonStyle),
-				_List_fromArray(
-					[
-						elm$html$Html$text('Correct!')
-					]));
-		} else {
-			var _n2 = lastGuess.a;
-			return A2(
-				elm$html$Html$div,
-				A2(elm$core$List$cons, incorrect, commonStyle),
-				_List_fromArray(
-					[
-						elm$html$Html$text('Incorrect. Please try again')
-					]));
-		}
-	} else {
-		return A2(elm$html$Html$div, _List_Nil, _List_Nil);
-	}
-};
-var author$project$Main$renderElimination = function (state) {
-	return A2(
-		elm$html$Html$div,
-		_List_fromArray(
-			[
-				A2(elm$html$Html$Attributes$style, 'text-align', 'center')
-			]),
-		_List_fromArray(
-			[
-				A2(
-				elm$html$Html$div,
-				_List_fromArray(
-					[
-						A2(elm$html$Html$Attributes$style, 'display', 'inline-block')
-					]),
-				_List_fromArray(
-					[
-						elm$html$Html$text('Since no candidate received a majority, we eliminate the least popular pizza and move those ballots to the voters\' next available choices. Click on the least popular pizza')
-					])),
-				A2(
-				elm$html$Html$div,
-				_List_fromArray(
-					[
-						A2(elm$html$Html$Attributes$style, 'display', 'flex'),
-						A2(elm$html$Html$Attributes$style, 'justify-content', 'center'),
-						A2(elm$html$Html$Attributes$style, 'flex-wrap', 'wrap')
-					]),
-				_Utils_ap(
-					_List_fromArray(
-						[
-							author$project$Main$renderLastGuess(state.F)
-						]),
-					A2(elm$core$List$map, author$project$Main$renderCandidateElim, state.k)))
-			]));
-};
-var author$project$Main$DragDropMsg = function (a) {
-	return {$: 2, a: a};
-};
 var elm$html$Html$h4 = _VirtualDom_node('h4');
 var elm$html$Html$li = _VirtualDom_node('li');
 var elm$html$Html$ol = _VirtualDom_node('ol');
+var elm$core$Basics$composeL = F3(
+	function (g, f, x) {
+		return g(
+			f(x));
+	});
 var elm$virtual_dom$VirtualDom$attribute = F2(
 	function (key, value) {
 		return A2(
@@ -6134,11 +6141,6 @@ var elm$virtual_dom$VirtualDom$attribute = F2(
 			_VirtualDom_noJavaScriptOrHtmlUri(value));
 	});
 var elm$html$Html$Attributes$attribute = elm$virtual_dom$VirtualDom$attribute;
-var elm$core$Basics$composeL = F3(
-	function (g, f, x) {
-		return g(
-			f(x));
-	});
 var elm$json$Json$Decode$value = _Json_decodeValue;
 var norpan$elm_html5_drag_drop$Html5$DragDrop$DragEnd = {$: 1};
 var norpan$elm_html5_drag_drop$Html5$DragDrop$DragStart = F2(
@@ -6222,10 +6224,7 @@ var author$project$Main$renderBallot = F2(
 							A2(
 								elm$core$List$cons,
 								A2(elm$html$Html$Attributes$style, 'margin', 'auto'),
-								A2(
-									elm$core$List$cons,
-									A2(elm$html$Html$Attributes$attribute, 'ondragStart', 'onDragStart(event)'),
-									A2(norpan$elm_html5_drag_drop$Html5$DragDrop$draggable, author$project$Main$DragDropMsg, ballot))))))),
+								A2(norpan$elm_html5_drag_drop$Html5$DragDrop$draggable, author$project$Main$DragDropMsg, ballot)))))),
 			_List_fromArray(
 				[
 					A2(
@@ -6242,24 +6241,24 @@ var author$project$Main$renderBallot = F2(
 						[
 							A2(
 							elm$html$Html$li,
-							choiceStyle(ballot.d),
+							choiceStyle(ballot.a),
 							_List_fromArray(
 								[
-									elm$html$Html$text(ballot.d)
+									elm$html$Html$text(ballot.a)
 								])),
 							A2(
 							elm$html$Html$li,
-							choiceStyle(ballot.e),
+							choiceStyle(ballot.b),
 							_List_fromArray(
 								[
-									elm$html$Html$text(ballot.e)
+									elm$html$Html$text(ballot.b)
 								])),
 							A2(
 							elm$html$Html$li,
-							choiceStyle(ballot.f),
+							choiceStyle(ballot.c),
 							_List_fromArray(
 								[
-									elm$html$Html$text(ballot.f)
+									elm$html$Html$text(ballot.c)
 								]))
 						]))
 				]));
