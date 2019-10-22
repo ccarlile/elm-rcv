@@ -37,8 +37,8 @@ ballots candidates =
              ]
 
         2 ->
-             [ { choice1 = Candidates.supreme, choice2 = Candidates.pepperoni, choice3 = Candidates.hawaiian, pos = Nothing}
-             , { choice1 = Candidates.supreme, choice2 = Candidates.pepperoni, choice3 = Candidates.hawaiian, pos = Nothing}
+             [ { choice1 = Candidates.supreme, choice2 = Candidates.hawaiian, choice3 = Candidates.pepperoni, pos = Nothing}
+             , { choice1 = Candidates.supreme, choice2 = Candidates.hawaiian, choice3 = Candidates.pepperoni, pos = Nothing}
             , { choice1 = Candidates.supreme, choice2 = Candidates.mushroom, choice3 = Candidates.hawaiian, pos = Nothing}
              ]
         _ -> []

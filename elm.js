@@ -4831,8 +4831,8 @@ var author$project$Ballots$ballots = function (candidates) {
 		case 2:
 			return _List_fromArray(
 				[
-					{a: author$project$Candidates$supreme, b: author$project$Candidates$pepperoni, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
-					{a: author$project$Candidates$supreme, b: author$project$Candidates$pepperoni, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$supreme, b: author$project$Candidates$hawaiian, c: author$project$Candidates$pepperoni, d: elm$core$Maybe$Nothing},
+					{a: author$project$Candidates$supreme, b: author$project$Candidates$hawaiian, c: author$project$Candidates$pepperoni, d: elm$core$Maybe$Nothing},
 					{a: author$project$Candidates$supreme, b: author$project$Candidates$mushroom, c: author$project$Candidates$hawaiian, d: elm$core$Maybe$Nothing}
 				]);
 		default:
