@@ -5434,7 +5434,7 @@ var elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 			return 3;
 	}
 };
-var elm$html$Html$h3 = _VirtualDom_node('h3');
+var elm$html$Html$h4 = _VirtualDom_node('h4');
 var elm$html$Html$h5 = _VirtualDom_node('h5');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
@@ -5442,7 +5442,7 @@ var author$project$Main$candidateHtml = function (candidate) {
 	return _List_fromArray(
 		[
 			A2(
-			elm$html$Html$h3,
+			elm$html$Html$h4,
 			_List_Nil,
 			_List_fromArray(
 				[
@@ -5470,8 +5470,6 @@ var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
 var author$project$Main$candidateStyle = _List_fromArray(
 	[
-		A2(elm$html$Html$Attributes$style, 'width', '161px'),
-		A2(elm$html$Html$Attributes$style, 'height', '161px'),
 		A2(elm$html$Html$Attributes$style, 'margin', '1em'),
 		A2(elm$html$Html$Attributes$style, 'padding', '.5em'),
 		A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
@@ -6124,7 +6122,6 @@ var author$project$Main$losers = function (round) {
 	return elm$core$Set$toList(
 		A2(elm$core$Set$diff, allCandidatesSet, roundSet));
 };
-var elm$html$Html$h4 = _VirtualDom_node('h4');
 var elm$html$Html$li = _VirtualDom_node('li');
 var elm$html$Html$ol = _VirtualDom_node('ol');
 var elm$core$Basics$composeL = F3(
@@ -6210,23 +6207,17 @@ var author$project$Main$renderBallot = F2(
 			elm$html$Html$div,
 			A2(
 				elm$core$List$cons,
-				A2(elm$html$Html$Attributes$style, 'width', '161px'),
+				A2(elm$html$Html$Attributes$style, 'border', '3px solid black'),
 				A2(
 					elm$core$List$cons,
-					A2(elm$html$Html$Attributes$style, 'height', '161px'),
+					A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
 					A2(
 						elm$core$List$cons,
-						A2(elm$html$Html$Attributes$style, 'border', '3px solid black'),
+						A2(elm$html$Html$Attributes$style, 'padding', '.5em'),
 						A2(
 							elm$core$List$cons,
-							A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
-							A2(
-								elm$core$List$cons,
-								A2(elm$html$Html$Attributes$style, 'padding', '.5em'),
-								A2(
-									elm$core$List$cons,
-									A2(elm$html$Html$Attributes$style, 'margin', 'auto'),
-									A2(norpan$elm_html5_drag_drop$Html5$DragDrop$draggable, author$project$Main$DragDropMsg, ballot))))))),
+							A2(elm$html$Html$Attributes$style, 'margin', 'auto'),
+							A2(norpan$elm_html5_drag_drop$Html5$DragDrop$draggable, author$project$Main$DragDropMsg, ballot))))),
 			_List_fromArray(
 				[
 					A2(
@@ -6714,7 +6705,6 @@ var author$project$Main$view = function (model) {
 						elm$html$Html$div,
 						_List_fromArray(
 							[
-								elm$html$Html$Attributes$class('htb-container htb-align-content-center'),
 								A2(elm$html$Html$Attributes$style, 'display', 'inline-block')
 							]),
 						_List_fromArray(

@@ -229,8 +229,8 @@ view model =
     case model of
         Intro ->
             div [ style "text-align" "center"] [
-                 div [ class "htb-container htb-align-content-center"
-                     , style "display" "inline-block" ]
+                 div [ --class "htb-container htb-align-content-center"
+                       style "display" "inline-block" ]
                      [ h1 [] [ text "Welcome to the RCV simulator!"]
                      , p [] [ text "Sixteen people are trying to determine which kind of pizza to buy. Every person lists their top 3 pizzas, in order of preference, on their ballot." ]
                      , p [] [ text "In the first round, drag each ballot to the stack that matches its first vote." ]
@@ -396,9 +396,9 @@ renderGame game =
         ]
 
 candidateStyle =
-     [ style "width" "161px"
-         , style "height" "161px"
-         , style "margin" "1em"
+     [ -- style "width" "40%"
+         -- , style "height" "40%"
+          style "margin" "1em"
          , style "padding" ".5em"
          , style "border-radius" "5px"
          , style "background-color" "#387e82"
@@ -408,7 +408,7 @@ candidateStyle =
 
 candidateHtml : Candidate -> List (Html Msg)
 candidateHtml candidate =
-    [ h3 [] [ text candidate.name ]
+    [ h4 [] [ text candidate.name ]
     , h5 [] [ text (String.join "" [ "(Votes: " , (String.fromInt candidate.votes) , ")" ])
             ]
     ]
@@ -469,8 +469,8 @@ renderBallot ballot round =
                   ]
               else []
     in
-        div ( style "width" "161px" ::
-                  style "height" "161px" ::
+        div ( -- style "width" "10em" ::
+                  -- style "height" "10em" ::
                   style "border" "3px solid black" ::
                   style "border-radius" "5px" ::
                   style "padding" ".5em" ::
