@@ -25,6 +25,11 @@
       });
 
       MobileDragDrop.polyfill({});
+
+      try {
+          window.addEventListener('touchmove', function () {
+          }, {passive: false})
+      } catch(e) {}
     </script>
   </body>
 </html>
