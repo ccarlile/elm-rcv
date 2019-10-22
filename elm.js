@@ -6222,14 +6222,32 @@ var author$project$Main$renderBallot = F2(
 				[
 					A2(
 					elm$html$Html$h4,
-					_List_Nil,
 					_List_fromArray(
 						[
-							elm$html$Html$text('Favorite Pizza Ballot')
+							A2(elm$html$Html$Attributes$style, 'margin-bottom', '.5em')
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('Favorite Pizza')
+						])),
+					A2(
+					elm$html$Html$h4,
+					_List_fromArray(
+						[
+							A2(elm$html$Html$Attributes$style, 'margin-top', '.5em')
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('Ballot')
 						])),
 					A2(
 					elm$html$Html$ol,
-					_List_Nil,
+					_List_fromArray(
+						[
+							A2(elm$html$Html$Attributes$style, 'list-style-position', 'inside'),
+							A2(elm$html$Html$Attributes$style, 'text-align', 'left'),
+							A2(elm$html$Html$Attributes$style, 'padding-left', '.5em')
+						]),
 					_List_fromArray(
 						[
 							A2(

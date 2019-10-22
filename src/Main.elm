@@ -476,11 +476,16 @@ renderBallot ballot round =
                   style "padding" ".5em" ::
                   style "margin" "auto" ::
                   DragDrop.draggable DragDropMsg ballot )
-            [ h4 [] 
-                  [ text "Favorite Pizza Ballot"]
-            , ol [] [ li ( choiceStyle ballot.choice1) [ text ballot.choice1  ]
-                    , li ( choiceStyle ballot.choice2 ) [ text ballot.choice2  ]
-                    , li ( choiceStyle ballot.choice3 ) [ text ballot.choice3  ]
+            [ h4 [ style "margin-bottom" ".5em"] 
+                  [ text "Favorite Pizza"]
+            , h4 [ style "margin-top" ".5em" ]
+                  [ text "Ballot" ]
+            , ol [ style "list-style-position" "inside"
+                 , style "text-align" "left"
+                 , style "padding-left" ".5em" ]
+                  [ li ( choiceStyle ballot.choice1) [ text ballot.choice1  ]
+                  , li ( choiceStyle ballot.choice2 ) [ text ballot.choice2  ]
+                  , li ( choiceStyle ballot.choice3 ) [ text ballot.choice3  ]
                  ]
          ]
 
