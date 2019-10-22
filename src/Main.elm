@@ -354,7 +354,7 @@ renderLastGuess lastGuess =
             , style "margin-left" "3em"
             , style "margin-right" "3em"
             , style "margin-top" ".5em"
-            , style "padding-bottom" ".5em"
+            , style "padding" ".5em"
             , style "text-align" "center"
             , style "border-radius" "5px"
             , style "color" "white"
@@ -397,10 +397,9 @@ renderGame game =
 
 candidateStyle =
      [ style "width" "161px"
-         , style "height" "100px"
-         , style "margin" "1.5em 1em"
-         , style "padding-top" "1em"
-         , style "padding-bottom" "2em"
+         , style "height" "161px"
+         , style "margin" "1em"
+         , style "padding" ".5em"
          , style "border-radius" "5px"
          , style "background-color" "#387e82"
          , style "text-align" "center"
@@ -471,9 +470,10 @@ renderBallot ballot round =
               else []
     in
         div ( style "width" "161px" ::
+                  style "height" "161px" ::
                   style "border" "3px solid black" ::
                   style "border-radius" "5px" ::
-                  style "padding" "1em" ::
+                  style "padding" ".5em" ::
                   style "margin" "auto" ::
                   DragDrop.draggable DragDropMsg ballot )
             [ h4 [] 

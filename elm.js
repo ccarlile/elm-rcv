@@ -5471,10 +5471,9 @@ var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
 var author$project$Main$candidateStyle = _List_fromArray(
 	[
 		A2(elm$html$Html$Attributes$style, 'width', '161px'),
-		A2(elm$html$Html$Attributes$style, 'height', '100px'),
-		A2(elm$html$Html$Attributes$style, 'margin', '1.5em 1em'),
-		A2(elm$html$Html$Attributes$style, 'padding-top', '1em'),
-		A2(elm$html$Html$Attributes$style, 'padding-bottom', '2em'),
+		A2(elm$html$Html$Attributes$style, 'height', '161px'),
+		A2(elm$html$Html$Attributes$style, 'margin', '1em'),
+		A2(elm$html$Html$Attributes$style, 'padding', '.5em'),
 		A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
 		A2(elm$html$Html$Attributes$style, 'background-color', '#387e82'),
 		A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
@@ -5521,7 +5520,7 @@ var author$project$Main$renderLastGuess = function (lastGuess) {
 			A2(elm$html$Html$Attributes$style, 'margin-left', '3em'),
 			A2(elm$html$Html$Attributes$style, 'margin-right', '3em'),
 			A2(elm$html$Html$Attributes$style, 'margin-top', '.5em'),
-			A2(elm$html$Html$Attributes$style, 'padding-bottom', '.5em'),
+			A2(elm$html$Html$Attributes$style, 'padding', '.5em'),
 			A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
 			A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
 			A2(elm$html$Html$Attributes$style, 'color', 'white')
@@ -6214,17 +6213,20 @@ var author$project$Main$renderBallot = F2(
 				A2(elm$html$Html$Attributes$style, 'width', '161px'),
 				A2(
 					elm$core$List$cons,
-					A2(elm$html$Html$Attributes$style, 'border', '3px solid black'),
+					A2(elm$html$Html$Attributes$style, 'height', '161px'),
 					A2(
 						elm$core$List$cons,
-						A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
+						A2(elm$html$Html$Attributes$style, 'border', '3px solid black'),
 						A2(
 							elm$core$List$cons,
-							A2(elm$html$Html$Attributes$style, 'padding', '1em'),
+							A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
 							A2(
 								elm$core$List$cons,
-								A2(elm$html$Html$Attributes$style, 'margin', 'auto'),
-								A2(norpan$elm_html5_drag_drop$Html5$DragDrop$draggable, author$project$Main$DragDropMsg, ballot)))))),
+								A2(elm$html$Html$Attributes$style, 'padding', '.5em'),
+								A2(
+									elm$core$List$cons,
+									A2(elm$html$Html$Attributes$style, 'margin', 'auto'),
+									A2(norpan$elm_html5_drag_drop$Html5$DragDrop$draggable, author$project$Main$DragDropMsg, ballot))))))),
 			_List_fromArray(
 				[
 					A2(
