@@ -248,7 +248,8 @@ view model =
         PickWinner winners ->
             renderPickWinners winners
         Winner candidate ->
-            div [ style "text-align" "center" ]
+            div [ style "text-align" "center"
+                , class "elm-container" ]
                 [ div [ style "display" "inline-block" ]
                       [ h1 [] [ text "Congratulations!" ]
                          , text "As you can see, Ranked Choice Voting allows us to easily determine which type of pizza is most preferred by most people. To play again, "
@@ -275,7 +276,8 @@ renderPickWinners state =
         render cand =
             isWinner cand |> renderCandidateWinner cand
     in
-        div [ style "text-align" "center" ]
+        div [ style "text-align" "center"
+            , class "elm-container"]
             [ div [ style "display" "inline-block" ]
                   [ text "Now, look at the total votes and click the winning pizza"
                   , div [ style "display" "flex"
@@ -296,10 +298,16 @@ renderPostElimination state =
                                        ]
 
     in
-        div [ style "text-align" "center" ]
+        div [ style "text-align" "center"
+            , class "elm-container" ]
             [ div [ style "display" "inline-block" ]
                   [ text lastLoserText
-                  , div [] [ button [ onClick NextRound, class "htb-btn", style "margin-top" "1em" ] [ text "Next Round" ] ]
+                  , div []
+                      [ button
+                            [ onClick NextRound
+                            , class "htb-btn"
+                            , style "margin-top" "1em" ]
+                            [ text "Next Round" ] ]
                   ]
         ]
         
@@ -326,7 +334,8 @@ renderPreElimination state =
 
     in
                  
-        div [ style "text-align" "center" ]
+        div [ style "text-align" "center"
+            , class "elm-container"]
             [ div [ style "display" "inline-block"] [text "Next we need to determine if any candidate has a majority. With 16 ballots, a majority would be 9 votes. Has any pizza received 9 votes?"]
             , div [] [ button [ onClick yesButtonOnClick, class "htb-btn", style "margin-top" "1em" ] [ text "Yes!" ]
                      , button [ onClick noButtonOnClick, class "htb-btn", style "margin-top" "1em" ] [ text "No" ]
@@ -339,7 +348,8 @@ renderPreElimination state =
 
 renderElimination: EliminationState -> Html Msg
 renderElimination state =
-    div [ style "text-align" "center" ]
+    div [ style "text-align" "center"
+        , class "elm-container" ]
         [ div [ style "display" "inline-block" ] [text "Since no candidate received a majority, we eliminate the least popular pizza and move those ballots to the voters' next available choices. Click on the least popular pizza"]
         , div [ style "display" "flex"
               , style "justify-content" "center"
@@ -358,17 +368,20 @@ renderLastGuess lastGuess =
             , style "text-align" "center"
             , style "border-radius" "5px"
             , style "color" "white"
+            , class "elm-guess"
             ]
 
         correct =
-            style "background-color" "#387e82"
+            [ style "background-color" "#387e82"
+            , class "elm-guess-wrong" ]
         incorrect =
-            style "background-color" "#D75835"
+            [ style "background-color" "#D75835"
+            , class "elm-guess-right" ]
 
     in
         case lastGuess of
-            Just Correct -> div ( correct :: commonStyle ) [ text "Correct!" ]
-            Just Incorrect -> div ( incorrect :: commonStyle ) [ text "Incorrect. Please try again" ]
+            Just Correct -> div ( correct ++ commonStyle ) [ text "Correct!" ]
+            Just Incorrect -> div ( incorrect ++ commonStyle ) [ text "Incorrect. Please try again" ]
             Nothing -> div [] []
                                                               
     
@@ -385,7 +398,8 @@ renderGame game =
                        [ text "Drag each ballot onto the matching candidate."]
 
     in
-        div [ style "text-align" "center" ]
+        div [ style "text-align" "center"
+            , class "elm-container" ]
             [ instructions,
                   div [ style "display" "flex"
                   , style "justify-content" "center"
@@ -396,15 +410,14 @@ renderGame game =
         ]
 
 candidateStyle =
-     [ -- style "width" "40%"
-         -- , style "height" "40%"
-          style "margin" "1em"
-         , style "padding" ".5em"
-         , style "border-radius" "5px"
-         , style "background-color" "#387e82"
-         , style "text-align" "center"
-         , style "color" "white"
-         ]
+     [ style "margin" "1em"
+     , style "padding" ".5em"
+     , style "border-radius" "5px"
+     , style "background-color" "#387e82"
+     , style "text-align" "center"
+     , style "color" "white"
+     , class "elm-candidate"
+     ]
 
 candidateHtml : Candidate -> List (Html Msg)
 candidateHtml candidate =
@@ -412,8 +425,6 @@ candidateHtml candidate =
     , h5 [] [ text (String.join "" [ "(Votes: " , (String.fromInt candidate.votes) , ")" ])
             ]
     ]
-    
-                          
         
 renderCandidateElim : Candidate -> Html Msg
 renderCandidateElim candidate =
@@ -466,23 +477,23 @@ renderBallot ballot round =
               if (losers round |> List.member name) then
                   [ style "text-decoration" "line-through"
                   , style "color" "red"
+                  , class "elm-ballot-choice-eliminated"
                   ]
               else []
     in
-        div ( -- style "width" "10em" ::
-                  -- style "height" "10em" ::
-                  style "border" "3px solid black" ::
-                  style "border-radius" "5px" ::
-                  style "padding" ".5em" ::
-                  style "margin" "auto" ::
-                  DragDrop.draggable DragDropMsg ballot )
+        div ( style "border" "3px solid black" ::
+              style "border-radius" "5px" ::
+              style "padding" ".5em" ::
+              style "margin" "auto" ::
+              class "elm-ballot" ::
+            DragDrop.draggable DragDropMsg ballot )
             [ h4 [ style "margin-bottom" ".5em"] 
                   [ text "Favorite Pizza"]
             , h4 [ style "margin-top" ".5em" ]
                   [ text "Ballot" ]
             , ol [ style "list-style-position" "inside"
                  , style "text-align" "left"
-                 , style "padding-left" ".5em" ]
+                 , style "padding-left" ".5em"]
                   [ li ( choiceStyle ballot.choice1) [ text ballot.choice1  ]
                   , li ( choiceStyle ballot.choice2 ) [ text ballot.choice2  ]
                   , li ( choiceStyle ballot.choice3 ) [ text ballot.choice3  ]

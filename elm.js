@@ -5466,6 +5466,15 @@ var author$project$Main$candidateHtml = function (candidate) {
 				]))
 		]);
 };
+var elm$json$Json$Encode$string = _Json_wrap;
+var elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			elm$json$Json$Encode$string(string));
+	});
+var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
 var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
 var author$project$Main$candidateStyle = _List_fromArray(
@@ -5475,7 +5484,8 @@ var author$project$Main$candidateStyle = _List_fromArray(
 		A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
 		A2(elm$html$Html$Attributes$style, 'background-color', '#387e82'),
 		A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
-		A2(elm$html$Html$Attributes$style, 'color', 'white')
+		A2(elm$html$Html$Attributes$style, 'color', 'white'),
+		elm$html$Html$Attributes$class('elm-candidate')
 	]);
 var author$project$Main$colorHex = '#387e82';
 var author$project$Main$AttemptEliminate = function (a) {
@@ -5510,8 +5520,16 @@ var author$project$Main$renderCandidateElim = function (candidate) {
 		author$project$Main$candidateHtml(candidate));
 };
 var author$project$Main$renderLastGuess = function (lastGuess) {
-	var incorrect = A2(elm$html$Html$Attributes$style, 'background-color', '#D75835');
-	var correct = A2(elm$html$Html$Attributes$style, 'background-color', '#387e82');
+	var incorrect = _List_fromArray(
+		[
+			A2(elm$html$Html$Attributes$style, 'background-color', '#D75835'),
+			elm$html$Html$Attributes$class('elm-guess-right')
+		]);
+	var correct = _List_fromArray(
+		[
+			A2(elm$html$Html$Attributes$style, 'background-color', '#387e82'),
+			elm$html$Html$Attributes$class('elm-guess-wrong')
+		]);
 	var commonStyle = _List_fromArray(
 		[
 			A2(elm$html$Html$Attributes$style, 'width', '100%'),
@@ -5521,14 +5539,15 @@ var author$project$Main$renderLastGuess = function (lastGuess) {
 			A2(elm$html$Html$Attributes$style, 'padding', '.5em'),
 			A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
 			A2(elm$html$Html$Attributes$style, 'border-radius', '5px'),
-			A2(elm$html$Html$Attributes$style, 'color', 'white')
+			A2(elm$html$Html$Attributes$style, 'color', 'white'),
+			elm$html$Html$Attributes$class('elm-guess')
 		]);
 	if (!lastGuess.$) {
 		if (!lastGuess.a) {
 			var _n1 = lastGuess.a;
 			return A2(
 				elm$html$Html$div,
-				A2(elm$core$List$cons, correct, commonStyle),
+				_Utils_ap(correct, commonStyle),
 				_List_fromArray(
 					[
 						elm$html$Html$text('Correct!')
@@ -5537,7 +5556,7 @@ var author$project$Main$renderLastGuess = function (lastGuess) {
 			var _n2 = lastGuess.a;
 			return A2(
 				elm$html$Html$div,
-				A2(elm$core$List$cons, incorrect, commonStyle),
+				_Utils_ap(incorrect, commonStyle),
 				_List_fromArray(
 					[
 						elm$html$Html$text('Incorrect. Please try again')
@@ -5552,7 +5571,8 @@ var author$project$Main$renderElimination = function (state) {
 		elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2(elm$html$Html$Attributes$style, 'text-align', 'center')
+				A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+				elm$html$Html$Attributes$class('elm-container')
 			]),
 		_List_fromArray(
 			[
@@ -6200,7 +6220,8 @@ var author$project$Main$renderBallot = F2(
 				author$project$Main$losers(round)) ? _List_fromArray(
 				[
 					A2(elm$html$Html$Attributes$style, 'text-decoration', 'line-through'),
-					A2(elm$html$Html$Attributes$style, 'color', 'red')
+					A2(elm$html$Html$Attributes$style, 'color', 'red'),
+					elm$html$Html$Attributes$class('elm-ballot-choice-eliminated')
 				]) : _List_Nil;
 		};
 		return A2(
@@ -6217,7 +6238,10 @@ var author$project$Main$renderBallot = F2(
 						A2(
 							elm$core$List$cons,
 							A2(elm$html$Html$Attributes$style, 'margin', 'auto'),
-							A2(norpan$elm_html5_drag_drop$Html5$DragDrop$draggable, author$project$Main$DragDropMsg, ballot))))),
+							A2(
+								elm$core$List$cons,
+								elm$html$Html$Attributes$class('elm-ballot'),
+								A2(norpan$elm_html5_drag_drop$Html5$DragDrop$draggable, author$project$Main$DragDropMsg, ballot)))))),
 			_List_fromArray(
 				[
 					A2(
@@ -6426,7 +6450,8 @@ var author$project$Main$renderGame = function (game) {
 		elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2(elm$html$Html$Attributes$style, 'text-align', 'center')
+				A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+				elm$html$Html$Attributes$class('elm-container')
 			]),
 		_List_fromArray(
 			[
@@ -6499,7 +6524,8 @@ var author$project$Main$renderPickWinners = function (state) {
 		elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2(elm$html$Html$Attributes$style, 'text-align', 'center')
+				A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+				elm$html$Html$Attributes$class('elm-container')
 			]),
 		_List_fromArray(
 			[
@@ -6526,15 +6552,6 @@ var author$project$Main$renderPickWinners = function (state) {
 };
 var author$project$Main$NextRound = {$: 7};
 var elm$html$Html$button = _VirtualDom_node('button');
-var elm$json$Json$Encode$string = _Json_wrap;
-var elm$html$Html$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			elm$json$Json$Encode$string(string));
-	});
-var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
 var author$project$Main$renderPostElimination = function (state) {
 	var lastLoserText = A2(
 		elm$core$String$join,
@@ -6545,7 +6562,8 @@ var author$project$Main$renderPostElimination = function (state) {
 		elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2(elm$html$Html$Attributes$style, 'text-align', 'center')
+				A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+				elm$html$Html$Attributes$class('elm-container')
 			]),
 		_List_fromArray(
 			[
@@ -6639,7 +6657,8 @@ var author$project$Main$renderPreElimination = function (state) {
 		elm$html$Html$div,
 		_List_fromArray(
 			[
-				A2(elm$html$Html$Attributes$style, 'text-align', 'center')
+				A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+				elm$html$Html$Attributes$class('elm-container')
 			]),
 		_List_fromArray(
 			[
@@ -6783,7 +6802,8 @@ var author$project$Main$view = function (model) {
 				elm$html$Html$div,
 				_List_fromArray(
 					[
-						A2(elm$html$Html$Attributes$style, 'text-align', 'center')
+						A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+						elm$html$Html$Attributes$class('elm-container')
 					]),
 				_List_fromArray(
 					[
